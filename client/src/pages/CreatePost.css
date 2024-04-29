@@ -1,0 +1,90 @@
+.ql-editor {
+  color: white;
+}
+
+/* This will set the background color of the editor to black */
+.ql-editor {
+  background-color: black;
+}
+
+.custom-quill-editor .ql-container {
+  /* width: 120vh;  */
+  min-height: 35vh;
+}
+
+.ql-toolbar {
+  /* width: 120vh; */
+  /* width: 100%; */
+  min-height: 5vh;
+  background-color: white;
+}
+
+.ReactQuill{
+  min-height: 45vh;
+  margin-top: 1.5%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ReactQuill-div{
+  width: 90%;
+}
+
+.INPUUT {
+  padding: 1vh;
+  background-color: whitesmoke;
+  color: black;
+  height: 5vh;
+  border-radius: 7px;
+  width: 80%;
+}
+
+.INPUUT-file {
+  /* width: 80%; */
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  background-color: black;
+  color: white;
+}
+.img-input-div{
+  display: flex;
+}
+
+.img-input{
+  margin-left: 1vh;
+  width: 50vh;
+}
+
+.Create-Post {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+.form-div{
+  height: inherit;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.Create-Post-Title, .Summary, .INPUUT-file, .ReactQuill{
+  display: flex;
+  justify-content: center;
+  height: 7vh;
+}
+
+.submit-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-btn{
+  border-radius: 7px;
+  padding: 2vh 10vh 2vh 10vh;
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+}
