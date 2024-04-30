@@ -1,17 +1,21 @@
 import { React, useState } from 'react'
 import axios from 'axios';
 import ReactQuill from 'react-quill';
+import { useCookies } from 'react-cookie'
+import { useNavigate } from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'
 import { useGetUserID } from '../hooks/useGetUserID';
 import './CreatePost.css'
 
 export default function CreatePost() {
   const userID = useGetUserID();
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState("")
   const [summary, setSummary] = useState("")
   const [imageUrl, setImageURL] = useState("")
   const [description, setDesc] = useState("")
+  const [cookies, _] = useCookies(['access_Token']);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +27,16 @@ export default function CreatePost() {
         imageUrl,
         description: plainTextDesc,
         userOwner: userID
+      }, {
+        headers: { authorization: cookies.access_Token }
       });
       setTitle("")
       setSummary("")
       setImageURL("")
       setDesc("")
+      navigate("/")
       console.log(response.data);
+
     } catch (err) {
       console.log(err);
     }

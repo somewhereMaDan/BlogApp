@@ -22,12 +22,10 @@ function Login() {
       });
       setUsername("")
       setPassword("")
-      // alert(response.data.message)
       setCookie('access_Token', response.data.token);
       window.localStorage.setItem("Username", response.data.username)
       window.localStorage.setItem("userID", response.data.userId)
-      navigate('/home')
-      // setUserData(response?.data?.response)
+      navigate('/')
     } catch (err) {
       console.log(err);
     }
