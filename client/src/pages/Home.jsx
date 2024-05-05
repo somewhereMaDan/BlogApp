@@ -1,124 +1,149 @@
-import { React, useState, useEffect } from 'react'
-import { useCookies } from 'react-cookie'
-import axios from 'axios'
-import { useGetUserID } from '../hooks/useGetUserID';
-import './Home.css'
+import { React, useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useGetUserID } from "../hooks/useGetUserID";
+import "./Home.css";
+import { toast } from "sonner";
 
 export default function Home() {
   const userId = useGetUserID();
-  const [cookies, setCookie] = useCookies(['access_Token']);
+  const [cookies, setCookie] = useCookies(["access_Token"]);
   const [Blogs, setBlogs] = useState([]);
-  const [savedBlogs, setsavedBlogs] = useState([])
-  const [Loading, setLoading] = useState(true)
+  const [savedBlogs, setsavedBlogs] = useState([]);
+  const [Loading, setLoading] = useState(true);
 
   const init = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/blogs`);
       setBlogs(response.data);
-      setLoading(false)
     } catch (err) {
       console.log(err);
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   const fetchSavedBlogs = async () => {
     try {
-      const Response = await axios.get(`http://localhost:5555/blogs/savedBlogs/ids/${userId}`);
-      setsavedBlogs(Response.data.savedBlogs)
-      setLoading(false)
+      const Response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/blogs/savedBlogs/ids/${userId}`
+      );
+      setsavedBlogs(Response.data.savedBlogs);
+      setLoading(false);
     } catch (err) {
       console.log(err);
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     init();
     if (cookies.access_Token) fetchSavedBlogs();
   }, []);
-  console.log(savedBlogs);
 
   const saveBlog = async (blogId) => {
     try {
-      const response = await axios.put("http://localhost:5555/blogs", {
-        blogId,
-        userId
-      }
-        , { headers: { authorization: cookies.access_Token } }
+      const newSavedBlogs = [...savedBlogs, blogId];
+      setsavedBlogs(newSavedBlogs);
+
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/blogs`,
+        {
+          blogId,
+          userId,
+        },
+        { headers: { authorization: cookies.access_Token } }
       );
-      setsavedBlogs(response.data.savedBlogs);
-      setLoading(false)
+      toast.success("Blog saved successfully");
+      setLoading(false);
     } catch (err) {
+      const revertedSavedBlogs = savedBlogs.filter((id) => id !== blogId);
+      setsavedBlogs(revertedSavedBlogs);
+
+      toast.error("Failed to save blog");
+
       console.log(err);
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const deleteBlog = async (blogId) => {
     try {
-      await axios.put("http://localhost:5555/blogs/delete", {
+      const newSavedBlogs = savedBlogs.filter((id) => id !== blogId);
+      setsavedBlogs(newSavedBlogs);
+
+      await axios.put(`${import.meta.env.VITE_API_URL}/blogs/delete`, {
         blogId,
-        userId
+        userId,
       });
-      setLoading(false)
+      toast.success("Blog deleted successfully");
+      setLoading(false);
     } catch (err) {
+      const revertedSavedBlogs = [...savedBlogs, blogId];
+      setsavedBlogs(revertedSavedBlogs);
+
       console.log(err);
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const isBlogSaved = (blogId) => {
     return savedBlogs.includes(blogId);
-  }
+  };
 
   if (Loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   // console.log("savedBlogs", savedBlogs);
 
   return (
-    <div className='HomePage'>
-      <div className='Blogs'>
-        <div className='Blog-container'>
-          {
-            Blogs.map((blog) => {
-              return (
-                <div className='blog-block' key={blog._id}>
-                  <div className='blog-title'>
-                    <h1>{blog.title}</h1>
+    <div className="HomePage">
+      <div className="Blogs">
+        <div className="Blog-container">
+          {Blogs.map((blog) => {
+            return (
+              <div className="blog-block" key={blog._id}>
+                <div className="blog-title">
+                  <h1>{blog.title}</h1>
+                </div>
+                <div className="blog-username">
+                  Created by: {blog.userOwner.username}
+                </div>
+                <div className="blog-summary">
+                  <summary>{blog.summary}</summary>
+                </div>
+                <div className="blog-image">
+                  <img className="blog-image-src" src={blog.imageUrl} alt="" />
+                </div>
+                <div className="save-blog">
+                  <div>
+                    <button
+                      className="save-blog-btn"
+                      onClick={() => saveBlog(blog._id)}
+                      disabled={isBlogSaved(blog._id)}
+                    >
+                      {isBlogSaved(blog._id) ? "Saved" : "Save"}
+                    </button>
                   </div>
-                  <div className='blog-username'>
-                    Created by: {blog.userOwner.username}
-                  </div>
-                  <div className='blog-summary'>
-                    <summary>{blog.summary}</summary>
-                  </div>
-                  <div className='blog-image'>
-                    <img className='blog-image-src' src={blog.imageUrl} alt="" />
-                  </div>
-                  <div className='save-blog'>
-                    <div>
-                      <button className='save-blog-btn' onClick={() => saveBlog(blog._id)} disabled={isBlogSaved(blog._id)}>
-                        {
-                          isBlogSaved(blog._id) ? "Saved" : "Save"
-                        }
-                      </button>
-                    </div>
-                    <div>
-                      <button className='delete-blog-btn' onClick={() => deleteBlog(blog._id)} disabled={!isBlogSaved(blog._id)}>Delete</button>
-                    </div>
-                  </div>
-                  <div className='blog-description'>
-                    <div>{blog.description}</div>
+                  <div>
+                    <button
+                      className="delete-blog-btn"
+                      onClick={() => deleteBlog(blog._id)}
+                      disabled={!isBlogSaved(blog._id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
-              )
-            })
-          }
+                <div className="blog-description">
+                  <div>{blog.description}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
-  )
+  );
 }
