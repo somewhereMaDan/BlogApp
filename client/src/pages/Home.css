@@ -1,5 +1,5 @@
 .HomePage {
-  margin-top: 7vh;
+  /* margin-top: 3vh; */
 }
 
 .Blogs {
@@ -11,11 +11,32 @@
 
 .blog-title,
 .blog-summary {
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.blog-username {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.save-blog{
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-blog-btn{
+  border-radius: 7px;
+  padding: 0.5vh 4vw 0.5vh 4vw;
+  background-color: rgb(228, 215, 215);
+  border: none;
 }
 
 .blog-image {
@@ -28,10 +49,23 @@
   width: 55vw;
 }
 
-.blog-description{
+.blog-description {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 2%;
   text-align: center;
+}
+
+.blog-block{
+  /* background-color: rgb(48, 30, 30); */
+  /* color: black; */
+  padding: 3vh;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

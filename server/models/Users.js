@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  TotalBlogs : [{type : mongoose.Schema.Types.ObjectId, ref : "blogs"}]
+  TotalBlogs : [{type : mongoose.Schema.Types.ObjectId, ref : "blogs"}],
+  SavedBlogs : [{type : mongoose.Schema.Types.ObjectId, ref : "blogs"}],
 })
 
 export const UserModel = mongoose.model("users", UserSchema);

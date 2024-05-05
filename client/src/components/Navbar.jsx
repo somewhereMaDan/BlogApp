@@ -47,6 +47,9 @@ export const Navbar = () => {
               <Link className='newPost' to="/create-post">Create new Post</Link>
             </div>
             <div>
+              <Link className='savedBlogs' to="/saved-blogs">Saved Blogs</Link>
+            </div>
+            <div>
               <button className='logout-btn' onClick={logout}>Logout ({window.localStorage.getItem('Username')})</button>
             </div>
           </div>

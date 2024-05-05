@@ -7,6 +7,7 @@ import Auth from './pages/Auth'
 import Home from './pages/Home';
 import { Navbar } from './components/Navbar';
 import CreatePost from './pages/CreatePost';
+import SavedBlogs from './pages/SavedBlogs';
 
 export const Appcontext = createContext(null);
 function App() {
@@ -14,11 +15,12 @@ function App() {
     <>
       <div>
         <BrowserRouter>
-        <Navbar/>
+          <Navbar />
           <Routes>
             <Route path='/auth' element={<Auth />} />
             <Route path='/' element={<Home />} />
-            <Route path='/create-post' element={<CreatePost/>} />
+            <Route path='/create-post' element={<CreatePost />} />
+            <Route path='/saved-blogs' element={<SavedBlogs />} />
           </Routes>
         </BrowserRouter>
       </div >
