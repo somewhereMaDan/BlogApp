@@ -11,15 +11,9 @@ export default function Home() {
   const [savedBlogs, setsavedBlogs] = useState([])
   const [Loading, setLoading] = useState(true)
 
-  // const init = async () => {
-  //   const response = await axios.get(`http://localhost:5555/blogs/totalBlogs/${userId}`);
-  //   console.log(response.data);
-  //   setBlogs(response.data);
-  // }
-
   const init = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/blogs`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/blogs`);
       setBlogs(response.data);
       setLoading(false)
     } catch (err) {
@@ -42,7 +36,9 @@ export default function Home() {
   useEffect(() => {
     init();
     if (cookies.access_Token) fetchSavedBlogs();
-  }, [Blogs]);
+  }, []);
+  console.log(savedBlogs);
+
   const saveBlog = async (blogId) => {
     try {
       const response = await axios.put("http://localhost:5555/blogs", {
@@ -80,7 +76,7 @@ export default function Home() {
     return <div>Loading...</div>
   }
 
-  console.log("savedBlogs", savedBlogs);
+  // console.log("savedBlogs", savedBlogs);
 
   return (
     <div className='HomePage'>
