@@ -48,7 +48,7 @@ router.get("/totalBlogs/:userId", async (req, res) => {
   }
 });
 
-router.put("/", async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
   try {
     const user = await UserModel.findById(req.body.userId);
     const blog = await BlogModel.findById(req.body.blogId);
@@ -56,6 +56,25 @@ router.put("/", async (req, res) => {
     await user.save();
 
     res.json({ savedBlogs: user.SavedBlogs, blog });
+  } catch (err) {
+    res.json(err)
+  }
+})
+
+router.put("/delete", async (req, res) => {
+  try {
+    const { userId, blogId } = req.body;
+    const user = await UserModel.findByIdAndUpdate(
+      userId,
+      { $pull: { SavedBlogs: blogId } },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "Blog deleted successfully" });
   } catch (err) {
     res.json(err)
   }
@@ -81,5 +100,7 @@ router.get("/savedBlogs/:userID", async (req, res) => {
     res.json(err);
   }
 })
+
+
 
 export { router as blogRouter }

@@ -9,6 +9,7 @@ export default function Home() {
   const [cookies, setCookie] = useCookies(['access_Token']);
   const [Blogs, setBlogs] = useState([]);
   const [savedBlogs, setsavedBlogs] = useState([])
+  const [Loading, setLoading] = useState(true)
 
   // const init = async () => {
   //   const response = await axios.get(`http://localhost:5555/blogs/totalBlogs/${userId}`);
@@ -17,30 +18,67 @@ export default function Home() {
   // }
 
   const init = async () => {
-    const response = await axios.get(`http://localhost:5555/blogs`);
-    setBlogs(response.data);
+    try {
+      const response = await axios.get(`http://localhost:5555/blogs`);
+      setBlogs(response.data);
+      setLoading(false)
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
+    }
   }
 
+  const fetchSavedBlogs = async () => {
+    try {
+      const Response = await axios.get(`http://localhost:5555/blogs/savedBlogs/ids/${userId}`);
+      setsavedBlogs(Response.data.savedBlogs)
+      setLoading(false)
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    init();
+    if (cookies.access_Token) fetchSavedBlogs();
+  }, [])
   const saveBlog = async (blogId) => {
     try {
       const response = await axios.put("http://localhost:5555/blogs", {
         blogId,
         userId
       }
-      //  ,{ headers: { authorization: cookies.access_Token } }
+        , { headers: { authorization: cookies.access_Token } }
       );
       setsavedBlogs(response.data.savedBlogs);
+      setLoading(false)
     } catch (err) {
       console.log(err);
+      setLoading(false)
+    }
+  }
+
+  const deleteBlog = async (blogId) => {
+    try {
+      await axios.put("http://localhost:5555/blogs/delete", {
+        blogId,
+        userId
+      });
+      setLoading(false)
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
     }
   }
 
   const isBlogSaved = (blogId) => {
     return savedBlogs.includes(blogId);
   }
-  useEffect(() => {
-    init();
-  }, [])
+
+  if (Loading) {
+    return <div>Loading...</div>
+  }
 
   console.log("savedBlogs", savedBlogs);
 
@@ -49,9 +87,9 @@ export default function Home() {
       <div className='Blogs'>
         <div className='Blog-container'>
           {
-            Blogs.map((blog, index) => {
+            Blogs.map((blog) => {
               return (
-                <div className='blog-block' key={index}>
+                <div className='blog-block' key={blog._id}>
                   <div className='blog-title'>
                     <h1>{blog.title}</h1>
                   </div>
@@ -71,6 +109,9 @@ export default function Home() {
                           isBlogSaved(blog._id) ? "Saved" : "Save"
                         }
                       </button>
+                    </div>
+                    <div>
+                      <button className='delete-blog-btn' onClick={() => deleteBlog(blog._id)} disabled={!isBlogSaved(blog._id)}>Delete</button>
                     </div>
                   </div>
                   <div className='blog-description'>
