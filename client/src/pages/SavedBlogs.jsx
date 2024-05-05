@@ -63,7 +63,7 @@ export default function SavedBlogs() {
                   <button
                     className="delete-blog-btn"
                     onClick={() => deleteBlog(blog._id)}
-                    disabled={!isBlogSaved(blog._id)}
+                    disabled={isBlogSaved(blog._id)}
                   >
                     Delete
                   </button>
