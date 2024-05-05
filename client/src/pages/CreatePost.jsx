@@ -99,6 +99,7 @@ export default function CreatePost() {
       setDesc(APIresponse?.[0]?.[0] || "");
     }
   }, [Loading, APIresponse]);
+  console.log(description);
   return (
     <div className="Create-Post">
       <div className="form-div">
