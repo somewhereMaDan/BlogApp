@@ -13,6 +13,10 @@ app.use(cors());
 app.use("/auth", userRouter)
 app.use("/blogs", blogRouter)
 
+app.get("/", (req, res) => {
+  res.send("Hello World")
+})
+
 mongoose.connect("mongodb+srv://root:root@blogapp.ckkmiqw.mongodb.net/?retryWrites=true&w=majority&appName=BlogApp")
 
 const db = mongoose.connection;
