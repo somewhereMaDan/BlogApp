@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import { useCookies } from 'react-cookie'
@@ -16,6 +16,8 @@ export default function CreatePost() {
   const [imageUrl, setImageURL] = useState("")
   const [description, setDesc] = useState("")
   const [cookies, _] = useCookies(['access_Token']);
+  const [APIresponse, setAPIresponse] = useState("")
+  const [Loading, setLoading] = useState(true)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +42,6 @@ export default function CreatePost() {
     } catch (err) {
       console.log(err);
     }
-    // console.log(Title, Summary, ImageURL, plainTextDesc);
   }
 
   const getPlainText = (value) => {
@@ -49,6 +50,45 @@ export default function CreatePost() {
     return div.textContent || div.innerText || '';
   };
 
+  const createDescription = async (e) => {
+    e.preventDefault()
+    try {
+      const requestBody = {
+        contents: [
+          {
+            parts: [
+              {
+                text: `Could you Please Provie me description about 100-150 words with of Title - 
+                ${title}, Summary = ${summary}. 
+                And no need to mention Title and Summary name at the top just give me a description for it.`
+              }
+            ]
+          }
+        ]
+      };
+
+      const response = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDvdKaAqQsbJim30noP8mfkHNAl0Y8pwhM', requestBody);
+      setAPIresponse(response.data.candidates.map(candidate => candidate.content.parts.map(part => part.text)));
+      // setDesc(APIresponse?.[0][0]);
+      // console.log("Inside Api Response, description: " + description);
+      setLoading(false)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setLoading(false)
+    }
+  }
+
+  // if (Loading == false) {
+  //   console.log(APIresponse?.[0][0]);
+  //   setDesc(APIresponse?.[0][0]);
+  // }
+  // console.log("description: " + description);
+
+  useEffect(() => {
+    if (!Loading) {
+      setDesc(APIresponse?.[0]?.[0] || '');
+    }
+  }, [Loading, APIresponse]);
   return (
     <div className='Create-Post'>
       <div className='form-div'>
@@ -68,6 +108,9 @@ export default function CreatePost() {
           <div className='ReactQuill'>
             <div className='ReactQuill-div'>
               <ReactQuill value={description} onChange={(e) => setDesc(e)} style={{ width: '100%' }} className='custom-quill-editor' />
+            </div>
+            <div className='generate-description'>
+              <button className='generate-description-btn' onClick={(e) => createDescription(e)}>Generate description</button>
             </div>
           </div>
           <div className='submit-div'>

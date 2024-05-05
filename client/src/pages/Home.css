@@ -37,8 +37,10 @@
   border: none;
 }
 
-.delete-blog-btn{
-  /* margin-left: 10%; */
+.delete-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5%;
 }
 
 .blog-image {

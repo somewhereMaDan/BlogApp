@@ -16,8 +16,24 @@ export default function SavedBlogs() {
   }
   useEffect(() => {
     init();
-  }, [])
+  }, [savedBlogs]);
 
+  const deleteBlog = async (blogId) => {
+    try {
+      await axios.put("http://localhost:5555/blogs/delete", {
+        blogId,
+        userId
+      });
+      setLoading(false)
+    } catch (err) {
+      console.log(err);
+      setLoading(false)
+    }
+  }
+
+  const isBlogSaved = (blogId) => {
+    return savedBlogs.includes(blogId);
+  }
 
   return (
     <div className='HomePage'>
@@ -38,6 +54,9 @@ export default function SavedBlogs() {
                   </div>
                   <div className='blog-image'>
                     <img className='blog-image-src' src={blog.imageUrl} alt="" />
+                  </div>
+                  <div className='delete-div'>
+                    <button className='delete-blog-btn' onClick={() => deleteBlog(blog._id)}>Delete</button>
                   </div>
                   <div className='blog-description'>
                     <div>{blog.description}</div>

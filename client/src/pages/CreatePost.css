@@ -19,15 +19,29 @@
   background-color: white;
 }
 
-.ReactQuill{
+.ReactQuill {
   min-height: 45vh;
   margin-top: 1.5%;
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 
-.ReactQuill-div{
+.generate-description {
+  position: absolute;
+  top: 2%;
+  right: 5.7%;
+}
+
+.generate-description-btn {
+  border: none;
+  border-radius: 7px;
+  padding: 0.5vh 1vh 0.5vh 1vh;
+  background-color: whitesmoke;
+}
+
+.ReactQuill-div {
   width: 90%;
 }
 
@@ -48,11 +62,11 @@
   background-color: black;
   color: white;
 }
-.img-input-div{
+.img-input-div {
   display: flex;
 }
 
-.img-input{
+.img-input {
   margin-left: 1vh;
   width: 50vh;
 }
@@ -64,24 +78,27 @@
   justify-content: space-evenly;
   height: 100vh;
 }
-.form-div{
+.form-div {
   height: inherit;
   /* display: flex; */
   /* justify-content: center; */
 }
 
-.Create-Post-Title, .Summary, .INPUUT-file, .ReactQuill{
+.Create-Post-Title,
+.Summary,
+.INPUUT-file,
+.ReactQuill {
   display: flex;
   justify-content: center;
   height: 7vh;
 }
 
-.submit-div{
+.submit-div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.submit-btn{
+.submit-btn {
   border-radius: 7px;
   padding: 2vh 10vh 2vh 10vh;
   background-color: whitesmoke;

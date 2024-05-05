@@ -42,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     init();
     if (cookies.access_Token) fetchSavedBlogs();
-  }, [])
+  }, [Blogs]);
   const saveBlog = async (blogId) => {
     try {
       const response = await axios.put("http://localhost:5555/blogs", {
