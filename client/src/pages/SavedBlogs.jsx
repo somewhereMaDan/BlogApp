@@ -13,7 +13,9 @@ export default function SavedBlogs() {
         `${import.meta.env.VITE_API_URL}/blogs/savedBlogs/${userId}`
       );
       setsavedBlogs(response.data.savedBlogs);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   useEffect(() => {
     init();
@@ -40,40 +42,44 @@ export default function SavedBlogs() {
     return savedBlogs.includes(blogId);
   };
 
+
   return (
     <div className="HomePage">
       <div className="Blogs">
         <div className="Blog-container">
-          {savedBlogs.map((blog) => {
-            return (
-              <div key={blog._id}>
-                <div className="blog-title">
-                  <h1>{blog.title}</h1>
+          {savedBlogs.length === 0 && <div className="no-blogs"><h1>No saved blogs</h1></div>}
+          {
+            savedBlogs.map((blog) => {
+              return (
+                <div key={blog._id}>
+                  <div className="blog-title">
+                    <h1>{blog.title}</h1>
+                  </div>
+                  <div className="blog-username">
+                    Created by: {blog.userOwner.username}
+                  </div>
+                  <div className="blog-summary">
+                    <summary>{blog.summary}</summary>
+                  </div>
+                  <div className="blog-image">
+                    <img className="blog-image-src" src={blog.imageUrl} alt="" />
+                  </div>
+                  <div className="delete-div">
+                    <button
+                      className="delete-blog-btn"
+                      onClick={() => deleteBlog(blog._id)}
+                      disabled={isBlogSaved(blog._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                  <div className="blog-description">
+                    <div>{blog.description}</div>
+                  </div>
                 </div>
-                <div className="blog-username">
-                  Created by: {blog.userOwner.username}
-                </div>
-                <div className="blog-summary">
-                  <summary>{blog.summary}</summary>
-                </div>
-                <div className="blog-image">
-                  <img className="blog-image-src" src={blog.imageUrl} alt="" />
-                </div>
-                <div className="delete-div">
-                  <button
-                    className="delete-blog-btn"
-                    onClick={() => deleteBlog(blog._id)}
-                    disabled={isBlogSaved(blog._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-                <div className="blog-description">
-                  <div>{blog.description}</div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          }
         </div>
       </div>
     </div>
