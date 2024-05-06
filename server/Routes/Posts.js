@@ -101,8 +101,16 @@ router.get("/savedBlogs/:userID", async (req, res) => {
   }
 })
 
-router.get("/generateDesc", async (req, res) => {
-  // const { reqBody } = req.body;
+router.post("/generateDesc", async (req, res) => {
+  const { title, summary } = req.body;
+
+  if (!title || !summary) {
+    res.status(400).send({
+      msg: "Title and Summary are required"
+
+    })
+    return
+  }
 
   const requestBody = {
     contents: [
@@ -110,7 +118,7 @@ router.get("/generateDesc", async (req, res) => {
         parts: [
           {
             text: `Could you Please Provie me description about 100-150 words with of Title - 
-            npm package, Summary = node js ecosystem. 
+            ${title}, Summary = ${summary}. 
             And no need to mention Title and Summary name at the top just give me a description for it.`,
           },
         ],
@@ -118,10 +126,6 @@ router.get("/generateDesc", async (req, res) => {
     ],
   };
 
-  if (!requestBody) {
-    res.status(400).send("No request body found")
-    return
-  }
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GOOGLE_GEMINI_API}`, {
@@ -133,6 +137,20 @@ router.get("/generateDesc", async (req, res) => {
     })
 
     const result = await response.json();
+
+    if (result.error) {
+      res.send(400).send({
+        msgg: "Something went wrong"
+      })
+      return
+    }
+
+    if (result.candidates[0].finishReason === "SAFETY") {
+      res.status(400).send({
+        msgg: "SAFETY_ISSUE"
+      })
+      return
+    }
 
     res.send(result.candidates[0].content.parts[0])
   } catch (error) {

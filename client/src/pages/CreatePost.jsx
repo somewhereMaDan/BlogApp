@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { useGetUserID } from "../hooks/useGetUserID";
 import "./CreatePost.css";
+import { toast } from "sonner";
 
 export default function CreatePost() {
   const userID = useGetUserID();
@@ -16,7 +17,7 @@ export default function CreatePost() {
   const [imageUrl, setImageURL] = useState("");
   const [description, setDesc] = useState("");
   const [cookies, _] = useCookies(["access_Token"]);
-  const [APIresponse, setAPIresponse] = useState("");
+
   const [Loading, setLoading] = useState(true);
 
   const handleSubmit = async (e) => {
@@ -55,36 +56,35 @@ export default function CreatePost() {
 
   const createDescription = async (e) => {
     e.preventDefault();
+
+    if (!title || !summary) {
+      toast.warning("Please fill the title and summary fields");
+      return;
+    }
+
     try {
-      const requestBody = {
-        contents: [
-          {
-            parts: [
-              {
-                text: `Could you Please Provie me description about 100-150 words with of Title - 
-                ${title}, Summary = ${summary}. 
-                And no need to mention Title and Summary name at the top just give me a description for it.`,
-              },
-            ],
-          },
-        ],
-      };
+      toast.info("Generating description using A.I");
 
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDvdKaAqQsbJim30noP8mfkHNAl0Y8pwhM`,
-        requestBody
+        `${import.meta.env.VITE_API_URL}/blogs/generateDesc`,
+        { title, summary }
       );
-      setAPIresponse(
-        response.data.candidates.map((candidate) =>
-          candidate.content.parts.map((part) => part.text)
-        )
-      );
-      // setDesc(APIresponse?.[0][0]);
-      // console.log("Inside Api Response, description: " + description);
+
+      toast.success("Description generated successfully");
+
+      setDesc(response.data.text);
+
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
+
+      if (error.response.data.msgg === "SAFETY_ISSUE") {
+        toast.warning("Cannot generate explicit content. Please try again.");
+        return;
+      }
+
+      toast.error("Failed to generate description");
     }
   };
 
@@ -94,11 +94,6 @@ export default function CreatePost() {
   // }
   // console.log("description: " + description);
 
-  useEffect(() => {
-    if (!Loading) {
-      setDesc(APIresponse?.[0]?.[0] || "");
-    }
-  }, [Loading, APIresponse]);
   return (
     <div className="Create-Post">
       <div className="form-div">
