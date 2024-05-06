@@ -88,11 +88,6 @@ export default function CreatePost() {
     }
   };
 
-  // if (Loading == false) {
-  //   console.log(APIresponse?.[0][0]);
-  //   setDesc(APIresponse?.[0][0]);
-  // }
-  // console.log("description: " + description);
 
   return (
     <div className="Create-Post">
