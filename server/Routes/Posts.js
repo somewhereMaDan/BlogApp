@@ -101,6 +101,51 @@ router.get("/savedBlogs/:userID", async (req, res) => {
   }
 })
 
+router.get("/generateDesc", async (req, res) => {
+  // const { reqBody } = req.body;
+
+  const requestBody = {
+    contents: [
+      {
+        parts: [
+          {
+            text: `Could you Please Provie me description about 100-150 words with of Title - 
+            npm package, Summary = node js ecosystem. 
+            And no need to mention Title and Summary name at the top just give me a description for it.`,
+          },
+        ],
+      },
+    ],
+  };
+
+  if (!requestBody) {
+    res.status(400).send("No request body found")
+    return
+  }
+
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GOOGLE_GEMINI_API}`, {
+      method: "POST",
+      body: JSON.stringify(requestBody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+
+    const result = await response.json();
+
+    res.send(result.candidates[0].content.parts[0])
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).send({
+      msgg: "something went wrong",
+      err: error.msgg
+    })
+
+  }
+
+})
 
 
 export { router as blogRouter }

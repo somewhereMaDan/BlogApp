@@ -2,6 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 import { userRouter } from '../Routes/users.js'
 import { blogRouter } from '../Routes/Posts.js'
 const app = express();
