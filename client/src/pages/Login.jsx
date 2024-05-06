@@ -37,13 +37,13 @@ function Login() {
   return (
     <div className="LoginPage">
       <div className="Login">
-        <form onSubmit={handleLogin} autocomplete="off" class="form">
-          <div class="control">
+        <form onSubmit={handleLogin} autocomplete="off" className="form">
+          <div className="control">
             <div className="SignIn_SignUp">
               <h1>Sign In</h1>
             </div>
           </div>
-          <div class="control block-cube block-input">
+          <div className="control block-cube block-input">
             <input
               name="username"
               value={username}
@@ -51,17 +51,17 @@ function Login() {
               placeholder="Username"
               type="text"
             />
-            <div class="bg-top">
-              <div class="bg-inner"></div>
+            <div className="bg-top">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
+            <div className="bg-right">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
+            <div className="bg">
+              <div className="bg-inner"></div>
             </div>
           </div>
-          <div class="control block-cube block-input">
+          <div className="control block-cube block-input">
             <input
               name="password"
               value={password}
@@ -69,27 +69,27 @@ function Login() {
               placeholder="Password"
               type="password"
             />
-            <div class="bg-top">
-              <div class="bg-inner"></div>
+            <div className="bg-top">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
+            <div className="bg-right">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
+            <div className="bg">
+              <div className="bg-inner"></div>
             </div>
           </div>
-          <button class="btn block-cube block-cube-hover" type="submit">
-            <div class="bg-top">
-              <div class="bg-inner"></div>
+          <button className="btn block-cube block-cube-hover" type="submit">
+            <div className="bg-top">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg-right">
-              <div class="bg-inner"></div>
+            <div className="bg-right">
+              <div className="bg-inner"></div>
             </div>
-            <div class="bg">
-              <div class="bg-inner"></div>
+            <div className="bg">
+              <div className="bg-inner"></div>
             </div>
-            <div class="text">Log In</div>
+            <div className="text">Log In</div>
           </button>
         </form>
       </div>
