@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import "./Login.css";
 import axios from "axios";
+import { toast } from "sonner";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -18,9 +19,14 @@ const Register = () => {
       );
       setUsername("");
       setPassword("");
-      alert(response.data.message);
+      // alert(response.data.message);
+      toast.success(response.data.message);
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.status === 401) {
+        toast.error("User already exists");
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     }
   };
   return (
