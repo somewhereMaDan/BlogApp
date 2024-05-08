@@ -26,7 +26,9 @@ export const Navbar = () => {
     <div className='navbar'>
 
       <div className='MyBlog'>
-        <Link className='title' to="/" onClick={handleBlogAppClick}>BlogApp</Link>
+        <div>
+          <Link className='title' to="/" onClick={handleBlogAppClick}>BlogApp</Link>
+        </div>
       </div>
       <div className='secondHalf'>
 
@@ -42,13 +44,16 @@ export const Navbar = () => {
         ) :
           <div className='login-logout'>
             <div>
+              <Link className='my-Blogs' to="/my-blogs">My Blogs</Link>
+            </div>
+            <div>
               <Link className='newPost' to="/create-post">Create new Post</Link>
             </div>
             <div>
               <Link className='savedBlogs' to="/saved-blogs">Saved Blogs</Link>
             </div>
-            <div>
-              <button className='logout-btn' onClick={logout}>Logout ({window.localStorage.getItem('Username')})</button>
+            <div className='logout-div-btn'>
+              <button className='logout-btn' onClick={logout}><span class="text">Logout ({window.localStorage.getItem('Username')})</span> </button>
             </div>
           </div>
         }

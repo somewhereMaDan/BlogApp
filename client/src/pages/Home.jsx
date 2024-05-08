@@ -115,26 +115,6 @@ export default function Home() {
                 <div className="blog-image">
                   <img className="blog-image-src" src={blog.imageUrl} alt="" />
                 </div>
-                {/* <div className="save-blog">
-                  <div>
-                    <button
-                      className="save-blog-btn"
-                      onClick={() => saveBlog(blog._id)}
-                      disabled={isBlogSaved(blog._id)}
-                    >
-                      {isBlogSaved(blog._id) ? "Saved" : "Save"}
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      className="delete-blog-btn"
-                      onClick={() => deleteBlog(blog._id)}
-                      disabled={!isBlogSaved(blog._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div> */}
                 {cookies.access_Token && (
                   <div className="save-blog">
                     <div>

@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import CreatePost from "./pages/CreatePost";
 import SavedBlogs from "./pages/SavedBlogs";
 import { Toaster } from "sonner";
+import MyBlogs from "./pages/MyBlogs";
 
 export const Appcontext = createContext(null);
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/saved-blogs" element={<SavedBlogs />} />
+            <Route path="/my-blogs" element={<MyBlogs />} />
           </Routes>
         </BrowserRouter>
       </div>
