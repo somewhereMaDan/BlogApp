@@ -1,8 +1,9 @@
 import { React, useState } from "react";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
+import { toast } from "sonner";
 
 function Login() {
   const navigate = useNavigate();
@@ -10,8 +11,6 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [_, setCookie] = useCookies(["access_Token"]);
-  // const { logout } = useContext(Appcontext)
-  // <button onClick={() => logout()}>logout</button>
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,9 +27,14 @@ function Login() {
       setCookie("access_Token", response.data.token);
       window.localStorage.setItem("Username", response.data.username);
       window.localStorage.setItem("userID", response.data.userId);
+      toast.success("Logged in Successfully");
       navigate("/");
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.status === 401) {
+        toast.error("Invalid username or password");
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     }
   };
 

@@ -20,8 +20,6 @@ export const Navbar = () => {
 
   const handleBlogAppClick = () => {
     setIsLoginClicked(false);
-    // You can navigate to the homepage if needed
-    // navigate("/");
   };
 
   return (

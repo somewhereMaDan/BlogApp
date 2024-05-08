@@ -88,7 +88,11 @@ export default function Home() {
   };
 
   const isBlogSaved = (blogId) => {
-    return savedBlogs.includes(blogId);
+    try{
+      return savedBlogs.includes(blogId);
+    }catch(err){
+      console.log(err);
+    }
   };
 
   if (Loading) {
