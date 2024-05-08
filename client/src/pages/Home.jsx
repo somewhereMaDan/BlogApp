@@ -59,9 +59,7 @@ export default function Home() {
     } catch (err) {
       const revertedSavedBlogs = savedBlogs.filter((id) => id !== blogId);
       setsavedBlogs(revertedSavedBlogs);
-
       toast.error("Failed to save blog");
-
       console.log(err);
       setLoading(false);
     }
@@ -81,7 +79,6 @@ export default function Home() {
     } catch (err) {
       const revertedSavedBlogs = [...savedBlogs, blogId];
       setsavedBlogs(revertedSavedBlogs);
-
       console.log(err);
       setLoading(false);
     }
@@ -98,8 +95,6 @@ export default function Home() {
   if (Loading) {
     return <div>Loading...</div>;
   }
-
-  // console.log("savedBlogs", savedBlogs);
 
   return (
     <div className="HomePage">

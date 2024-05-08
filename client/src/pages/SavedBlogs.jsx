@@ -33,7 +33,6 @@ export default function SavedBlogs() {
       toast.success("Blog deleted successfully");
     } catch (err) {
       toast.error("Error while deleting blog");
-
       console.log(err);
     }
   };

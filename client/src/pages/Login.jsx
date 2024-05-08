@@ -30,6 +30,8 @@ function Login() {
       toast.success("Logged in Successfully");
       navigate("/");
     } catch (err) {
+      setUsername("");
+      setPassword("");
       if (err.response && err.response.status === 401) {
         toast.error("Invalid username or password");
       } else {

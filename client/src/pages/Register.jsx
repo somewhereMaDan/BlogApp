@@ -19,9 +19,10 @@ const Register = () => {
       );
       setUsername("");
       setPassword("");
-      // alert(response.data.message);
       toast.success(response.data.message);
     } catch (err) {
+      setUsername("");
+      setPassword("");
       if (err.response && err.response.status === 403) {
         toast.error("User already exists");
       } else {
