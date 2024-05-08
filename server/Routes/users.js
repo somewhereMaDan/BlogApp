@@ -22,6 +22,23 @@ router.post("/register", async (req, res) => {
 })
 
 
+// router.post("/login", async (req, res, next) => {
+//   const { username, password } = req.body;
+//   const user = await UserModel.findOne({ username: username });
+//   if (!user) {
+//     return res.status(401).json({ message: "User does not exist" });
+//   }
+
+//   const isMatch = await bcrypt.compare(password, user.password);
+
+//   if (!isMatch) {
+//     return res.status(401).json({ message: "Username or Password is incorrect" });
+//   }
+//   const token = jwt.sign({ id: user._id }, "secret");
+
+//   res.status(200).json({ token, username: username, userId: user._id });
+// })
+
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username: username });
@@ -30,25 +47,36 @@ router.post("/login", async (req, res, next) => {
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
-
   if (!isMatch) {
     return res.status(401).json({ message: "Username or Password is incorrect" });
   }
-  const token = jwt.sign({ id: user._id }, "secret");
 
-  res.status(200).json({ token, username: username, userId: user._id });
-})
+  // Store user data in session
+  req.session.user = { id: user._id, username: username };
 
-export const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-  if(token){
-    jwt.verify(token, "secret", (err) => {
-      if(err) return res.sendStatus(403);
-      next();
-    })
-  }else{
-    res.sendStatus(401);
+  res.status(200).json({ message: "Login successful", username: username, userId: user._id });
+});
+
+
+// export const verifyToken = (req, res, next) => {
+//   const token = req.headers.authorization;
+//   if(token){
+//     jwt.verify(token, "secret", (err) => {
+//       if(err) return res.sendStatus(403);
+//       next();
+//     })
+//   }else{
+//     res.sendStatus(401);
+//   }
+// } 
+
+const isAuthenticated = (req, res, next) => {
+  if (req.session && req.session.user) {
+    return next(); // User is authenticated, proceed to the next middleware
+  } else {
+    return res.status(401).json({ message: "Unauthorized" }); // User is not authenticated
   }
-} 
+};
+
 
 export { router as userRouter }

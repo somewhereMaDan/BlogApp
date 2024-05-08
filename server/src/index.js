@@ -3,15 +3,23 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 
 import dotenv from 'dotenv'
+import session from 'express-session'
 dotenv.config()
 
 import { userRouter } from '../Routes/users.js'
 import { blogRouter } from '../Routes/Posts.js'
+
 const app = express();
 
 app.use(express.json())
 app.use(cors());
 app.use(cors());
+
+app.use(session({
+  secret: 'random_key', // Used to sign the session ID cookie
+  resave: false, // Don't save session if unmodified
+  saveUninitialized: false, // Don't create session until something is stored
+}));
 
 app.use("/auth", userRouter)
 app.use("/blogs", blogRouter)

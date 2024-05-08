@@ -11,10 +11,11 @@ function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [_, setCookie] = useCookies(["access_Token"]);
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      toast.info("Logging in...");
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/login`,
         {

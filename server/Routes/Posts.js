@@ -1,7 +1,7 @@
 import express from 'express'
 import { BlogModel } from '../models/Blogs.js'
 import { UserModel } from '../models/Users.js'
-import { verifyToken } from './users.js';
+// import { verifyToken } from './users.js';
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", async (req, res) => {
   const blog = new BlogModel(req.body)
   try {
     const savedBlogs = await blog.save();
@@ -48,7 +48,7 @@ router.get("/totalBlogs/:userId", async (req, res) => {
   }
 });
 
-router.put("/", verifyToken, async (req, res) => {
+router.put("/", async (req, res) => {
   try {
     const user = await UserModel.findById(req.body.userId);
     const blog = await BlogModel.findById(req.body.blogId);
