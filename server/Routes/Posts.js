@@ -8,9 +8,9 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const response = await BlogModel.find({}).populate('userOwner');
-    res.json(response);
+    res.status(200).json(response);
   } catch (err) {
-    res.json(err)
+    res.status(400).json(err)
   }
 })
 
@@ -23,9 +23,9 @@ router.post("/", verifyToken, async (req, res) => {
     await UserModel.findByIdAndUpdate(userId, {
       $push: { TotalBlogs: savedBlogs._id }
     })
-    res.json(savedBlogs);
+    res.status(200).json(savedBlogs);
   } catch (err) {
-    res.json(err)
+    res.status(400).json(err)
   }
 })
 
