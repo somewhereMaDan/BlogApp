@@ -1,7 +1,6 @@
 import express from 'express'
 import { BlogModel } from '../models/Blogs.js'
 import { UserModel } from '../models/Users.js'
-// import { verifyToken } from './users.js';
 
 const router = express.Router();
 
