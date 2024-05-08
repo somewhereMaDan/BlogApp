@@ -5,20 +5,6 @@ import { UserModel } from '../models/Users.js'
 
 const router = express.Router()
 
-// router.post("/register", async (req, res, next) => {
-//   const { username, password } = req.body;
-//   const user = await UserModel.findOne({ username: username });
-
-//   if (user) {
-//     return res.json({ message: "User already exist" })
-//   }
-
-//   const hashedPassword = await bcrypt.hash(password, 10);
-//   const newUser = new UserModel({ username: username, password: hashedPassword });
-//   await newUser.save();
-//   res.json({ message: "User registered successfully" });
-// })
-
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username: username });
