@@ -37,6 +37,12 @@
   border: none;
 } */
 
+.save-blog-btn:disabled , .delete-blog-btn:disabled {
+  color: black;
+  background-color: whitesmoke; /* Change this to the desired background color */
+  cursor: not-allowed; /* Change cursor to indicate it's disabled */
+}
+
 .save-blog-btn,
 .delete-blog-btn {
   height: 4vh;
