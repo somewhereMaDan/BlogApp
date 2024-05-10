@@ -30,13 +30,6 @@
   align-items: center;
 }
 
-/* .save-blog-btn , .delete-blog-btn {
-  border-radius: 7px;
-  padding: 0.5vh 4vw 0.5vh 4vw;
-  background-color: rgb(228, 215, 215);
-  border: none;
-} */
-
 .save-blog-btn:disabled , .delete-blog-btn:disabled {
   color: black;
   background-color: whitesmoke; /* Change this to the desired background color */
@@ -63,8 +56,10 @@
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 11vh;
+  padding-right: 11vh;
+  padding-top: 2.2vh;
+  padding-bottom: 2.2vh;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -115,15 +110,13 @@
 }
 
 .blog-block {
-  /* background-color: rgb(48, 30, 30); */
-  /* color: black; */
   padding: 3vh;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2%;
+  margin-top: 1.5%;
   margin-bottom: 2%;
 }
 
