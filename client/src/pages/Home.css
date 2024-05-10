@@ -56,8 +56,8 @@
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 11vh;
-  padding-right: 11vh;
+  padding-left: 11%;
+  padding-right: 11%;
   padding-top: 2.2vh;
   padding-bottom: 2.2vh;
   position: relative;
@@ -130,4 +130,8 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
+}
+
+@media screen and (max-width: 400px) {
+
 }
