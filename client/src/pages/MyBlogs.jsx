@@ -67,7 +67,7 @@ export default function MyBlogs() {
   }
 
   if (Loading) {
-    return <div>Loading...</div>;
+    return <div className="Loading-State">Loading...</div>;
   }
 
   const handleEditClick = (blogId, blogTiTle, blogUsername, blogSummary, blogImageUrl, blogDescription) => {
