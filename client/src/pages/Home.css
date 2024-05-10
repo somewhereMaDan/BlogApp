@@ -123,3 +123,11 @@
 .no-blogs {
   margin-top: 7vh;
 }
+
+.Loading-State{
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
