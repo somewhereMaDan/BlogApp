@@ -165,5 +165,39 @@ router.post("/generateDesc", async (req, res) => {
 
 })
 
+router.put("/totalBlogs/delete", async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const blogIdToDelete = req.body.blogId;
+
+    await BlogModel.findByIdAndDelete(blogIdToDelete);
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { $pull: { TotalBlogs: blogIdToDelete } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.put("/totalBlogs/update/:blogId", async (req, res) => {
+  try {
+    const blogId = req.params.blogId;
+    await BlogModel.findByIdAndUpdate(blogId, req.body);
+    res.status(200).json({ message: "Blog updated successfully" });
+
+  }catch(err){
+    res.status(500).json({ message: "Internal server error" });
+  }
+})
 
 export { router as blogRouter }

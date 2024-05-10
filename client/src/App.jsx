@@ -8,6 +8,7 @@ import CreatePost from "./pages/CreatePost";
 import SavedBlogs from "./pages/SavedBlogs";
 import { Toaster } from "sonner";
 import MyBlogs from "./pages/MyBlogs";
+import EditPost from "./pages/EditPost";
 
 export const Appcontext = createContext(null);
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/saved-blogs" element={<SavedBlogs />} />
             <Route path="/my-blogs" element={<MyBlogs />} />
+            <Route path="/edit-post/:blogId" element={<EditPost />} />
           </Routes>
         </BrowserRouter>
       </div>

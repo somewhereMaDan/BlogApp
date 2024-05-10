@@ -21,7 +21,8 @@ body {
 .newPost,
 .my-Blogs,
 .savedBlogs,
-.title {
+.title,
+.login-Register-btn {
   font-size: 21px;
   text-decoration: none;
   color: white;

@@ -23,13 +23,15 @@ export default function SavedBlogs() {
 
   const deleteBlog = async (blogId) => {
     try {
-      const newSavedBlogs = savedBlogs.filter((blog) => blog._id !== blogId);
-      setsavedBlogs(newSavedBlogs);
-
+      
       await axios.put(`${import.meta.env.VITE_API_URL}/blogs/delete`, {
         blogId,
         userId,
       });
+
+      const newSavedBlogs = savedBlogs.filter((blog) => blog._id !== blogId);
+      setsavedBlogs(newSavedBlogs);
+      
       toast.success("Blog deleted successfully");
     } catch (err) {
       toast.error("Error while deleting blog");

@@ -93,7 +93,7 @@ export default function Home() {
   };
 
   if (Loading) {
-    return <div>Loading...</div>;
+    return <div className="Loading-State">Loading...</div>;
   }
 
   return (

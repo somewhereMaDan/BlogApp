@@ -34,12 +34,12 @@ export const Navbar = () => {
 
         {!cookies.access_Token ? (
           <div>
-            <div>
+            <div className='login-Register-btn'>
               <button className='login-btn' onClick={login}>Login/Register</button>
             </div>
-            <div className='login-logout'>
-              <Link to="/auth"></Link>
-            </div>
+            {/* <div className='login-logout'>
+              <Link to="/auth">Please</Link>
+            </div> */}
           </div>
         ) :
           <div className='login-logout'>

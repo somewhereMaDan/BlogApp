@@ -7,16 +7,29 @@ import "react-quill/dist/quill.snow.css";
 import { useGetUserID } from "../hooks/useGetUserID";
 import "./CreatePost.css";
 import { toast } from "sonner";
+import { useLocation } from 'react-router-dom';
 
-export default function CreatePost() {
+export default function EditPost() {
+  const location = useLocation();
   const userID = useGetUserID();
   const navigate = useNavigate();
-
+  
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [imageUrl, setImageURL] = useState("");
   const [description, setDesc] = useState("");
   const [cookies, _] = useCookies(["access_Token"]);
+  
+  const { blogId, blogTiTle, blogUsername, blogSummary, blogImageUrl, blogDescription } = location.state;
+  console.log(blogId, blogTiTle, blogUsername, blogSummary, blogImageUrl, blogDescription);
+
+  useEffect(() => {
+    setTitle(blogTiTle);
+    setSummary(blogSummary);
+    setImageURL(blogImageUrl);
+    setDesc(blogDescription);
+    setLoading(false);
+  }, [blogId, blogTiTle, blogSummary, blogImageUrl, blogDescription]);
 
   const [Loading, setLoading] = useState(true);
 
@@ -24,25 +37,22 @@ export default function CreatePost() {
     e.preventDefault();
     const plainTextDesc = getPlainText(description);
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/blogs`,
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/blogs/totalBlogs/update/${blogId}`,
         {
           title,
           summary,
           imageUrl,
           description: plainTextDesc,
           userOwner: userID,
-        },
-        {
-          headers: { authorization: cookies.access_Token },
         }
       );
       setTitle("");
       setSummary("");
       setImageURL("");
       setDesc("");
-      toast.success("Blog created successfully");
-      navigate("/");
+      toast.success("Blog updated successfully");
+      navigate("/my-blogs");
       console.log(response.data);
     } catch (err) {
       console.log(err);
@@ -88,8 +98,7 @@ export default function CreatePost() {
       toast.error("Failed to generate description");
     }
   };
-
-
+  
   return (
     <div className="Create-Post">
       <div className="form-div">
