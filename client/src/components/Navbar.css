@@ -27,7 +27,7 @@ body {
   text-decoration: none;
   color: white;
   padding-bottom: 5px;
-  border-bottom: 3px solid indigo;
+  border-bottom: 3px solid rgb(85, 12, 138);
 }
 
 .savedBlogs {
