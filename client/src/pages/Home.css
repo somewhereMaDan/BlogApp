@@ -120,7 +120,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin-top: 0.5%; */
   margin-bottom: 2%;
 }
 
@@ -137,6 +136,16 @@
 }
 
 @media screen and (max-width: 750px) {
+  .blog-block {
+    width: 100vw;
+    padding: 3vh;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+  }
   .blog-image-src{
     height: 90%;
     width: 90%;

@@ -104,7 +104,7 @@ export default function Home() {
             return (
               <div className="blog-block" key={blog._id}>
                 <div className="blog-title">
-                  <summary className="blog-title-text">{blog.title}</summary>
+                  <h1 className="blog-title-text">{blog.title}</h1>
                 </div>
                 <div className="blog-username">
                   Created by: {blog.userOwner.username}
