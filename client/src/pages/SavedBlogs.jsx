@@ -23,7 +23,7 @@ export default function SavedBlogs() {
 
   const deleteBlog = async (blogId) => {
     try {
-      
+
       await axios.put(`${import.meta.env.VITE_API_URL}/blogs/delete`, {
         blogId,
         userId,
@@ -31,7 +31,7 @@ export default function SavedBlogs() {
 
       const newSavedBlogs = savedBlogs.filter((blog) => blog._id !== blogId);
       setsavedBlogs(newSavedBlogs);
-      
+
       toast.success("Blog deleted successfully");
     } catch (err) {
       toast.error("Error while deleting blog");
@@ -52,30 +52,32 @@ export default function SavedBlogs() {
           {
             savedBlogs.map((blog) => {
               return (
-                <div key={blog._id}>
-                  <div className="blog-title">
-                    <h1>{blog.title}</h1>
-                  </div>
-                  <div className="blog-username">
-                    Created by: {blog.userOwner.username}
-                  </div>
-                  <div className="blog-summary">
-                    <summary>{blog.summary}</summary>
-                  </div>
-                  <div className="blog-image">
-                    <img className="blog-image-src" src={blog.imageUrl} alt="" />
-                  </div>
-                  <div className="delete-div">
-                    <button
-                      className="delete-blog-btn"
-                      onClick={() => deleteBlog(blog._id)}
-                      disabled={isBlogSaved(blog._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                  <div className="blog-description">
-                    <div>{blog.description}</div>
+                <div className="blog-block" key={blog._id}>
+                  <div key={blog._id}>
+                    <div className="blog-title">
+                      <h1>{blog.title}</h1>
+                    </div>
+                    <div className="blog-username">
+                      Created by: {blog.userOwner.username}
+                    </div>
+                    <div className="blog-summary">
+                      <summary>{blog.summary}</summary>
+                    </div>
+                    <div className="blog-image">
+                      <img className="blog-image-src" src={blog.imageUrl} alt="" />
+                    </div>
+                    <div className="delete-div">
+                      <button
+                        className="delete-blog-btn"
+                        onClick={() => deleteBlog(blog._id)}
+                        disabled={isBlogSaved(blog._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                    <div className="blog-description">
+                      <div>{blog.description}</div>
+                    </div>
                   </div>
                 </div>
               );

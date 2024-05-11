@@ -20,7 +20,7 @@
 }
 
 .ReactQuill {
-  min-height: 45vh;
+  min-height: 43vh;
   margin-top: 1.5%;
   display: flex;
   justify-content: center;
@@ -30,15 +30,17 @@
 
 .generate-description {
   position: absolute;
-  top: 1%;
-  right: 5.7%;
+  top: 1.5%;
+  right: 5.5%;
 }
 
 .generate-description-btn {
+  color: black;
+  font-size: 15px;
   border: none;
   border-radius: 7px;
-  padding: 0.8vh 3.3vh;
-  background-color: rgb(29, 235, 235);
+  padding: 3.5% 2.5vh;
+  background-color: #20b2aa;
 }
 
 .ReactQuill-div {
@@ -54,21 +56,11 @@
   width: 80%;
 }
 
-.INPUUT-file {
-  /* width: 80%; */
-  display: flex;
-  align-items: center;
-  height: 5vh;
-  background-color: black;
-  color: white;
-}
-.img-input-div {
-  display: flex;
-}
-
 .img-input {
   margin-left: 1vh;
-  width: 50vh;
+  padding: 1vh;
+  min-width: 30vw;
+  border-radius: 7px;
 }
 
 .Create-Post {
@@ -80,14 +72,12 @@
 }
 .form-div {
   height: inherit;
-  /* display: flex; */
-  /* justify-content: center; */
 }
 
 .Create-Post-Title,
 .Summary,
 .INPUUT-file,
-.ReactQuill {
+.ReactQuill{
   display: flex;
   justify-content: center;
   height: 7vh;
@@ -100,8 +90,57 @@
 }
 .submit-btn {
   border-radius: 7px;
-  padding: 2vh 10vh 2vh 10vh;
+  padding: 1vh 7vh 1vh 7vh;
   background-color: whitesmoke;
   color: black;
   border: none;
+}
+
+@media screen and (max-width: 500px) {
+  .img-input {
+    min-height: 5vh;
+    border-radius: 7px;
+    padding: 1vh;
+  }
+  .INPUUT-file{
+    width: 98%;
+  }
+  .generate-description {
+    position: absolute;
+    top: 1%;
+    right: 2.5%;
+  }
+
+  .generate-description-btn {
+    font-size: 12px;
+    width: 20vw;
+    border: none;
+    border-radius: 7px;
+    padding: 0.5vh 0.8vh;
+    background-color: #20b2aa;
+  }
+  .ReactQuill {
+    min-height: 45vh;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .submit-div {
+    margin-top: 2vh;
+  }
+
+  .submit-btn {
+    border-radius: 7px;
+    padding: 1vh 5vh 1vh 5vh;
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+  }
+
+  .ReactQuill-div {
+    width: 100%;
+  }
 }

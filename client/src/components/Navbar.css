@@ -3,7 +3,9 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: black;
   color: white;
-  padding: 7vh 10vh 7vh 10vh;
+}
+.main-page{
+  padding: 7vh 10vh 7vh 10vh; 
 }
 
 .navbar {
@@ -27,7 +29,7 @@ body {
   text-decoration: none;
   color: white;
   padding-bottom: 5px;
-  border-bottom: 3px solid indigo;
+  border-bottom: 3px solid rgb(85, 12, 138);
 }
 
 .savedBlogs {
@@ -53,9 +55,6 @@ body {
   color: white;
 }
 
-.logout-div-btn{
-  margin-top: 0.5vh;
-}
 .logout-btn {
   appearance: none;
   background-color: #2d2b2b;

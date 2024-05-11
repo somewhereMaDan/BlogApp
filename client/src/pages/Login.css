@@ -144,13 +144,72 @@ h1 {
   opacity: 1;
 }
 
-#signup{
-  margin-top: 3vh;
-  width: 20vh;
-}
-
 .SignIn_SignUp{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    width: 60vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .form {
+    width: 50vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .form {
+    width: 45vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .form {
+    width: 37vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .form {
+    width: 33vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .form {
+    width: 30vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form {
+    width: 25vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .form {
+    width: 20vh;
+    padding: 64px 15px 24px;
+    margin: 0 auto;
+  }
 }

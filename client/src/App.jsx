@@ -14,7 +14,7 @@ export const Appcontext = createContext(null);
 function App() {
   return (
     <>
-      <div>
+      <div className="main-page">
         <Toaster richColors />
         <BrowserRouter>
           <Navbar />
