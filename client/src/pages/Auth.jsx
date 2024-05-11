@@ -2,10 +2,10 @@ import React from 'react'
 import Login from './Login'
 import Register from './Register'
 
-function Auth({ setUserData }) {
+function Auth() {
   return (
     <div className='auth-page' style={{ backgroundColor: 'black', color: 'white', height: '100vh', fontFamily: 'monospace, serif' }}>
-      <Login setUserData={setUserData}></Login>
+      <Login></Login>
       <Register></Register>
     </div>
   )
