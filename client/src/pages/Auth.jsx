@@ -4,7 +4,7 @@ import Register from './Register'
 
 function Auth({ setUserData }) {
   return (
-    <div style={{ backgroundColor: 'black', color: 'white', height: '100vh', fontFamily: 'monospace, serif' }}>
+    <div className='auth-page' style={{ backgroundColor: 'black', color: 'white', height: '100vh', fontFamily: 'monospace, serif' }}>
       <Login setUserData={setUserData}></Login>
       <Register></Register>
     </div>

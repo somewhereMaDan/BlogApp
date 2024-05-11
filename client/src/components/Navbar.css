@@ -3,7 +3,9 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: black;
   color: white;
-  padding: 7vh 10vh 7vh 10vh;
+}
+.main-page{
+  padding: 7vh 10vh 7vh 10vh; 
 }
 
 .navbar {
@@ -53,9 +55,6 @@ body {
   color: white;
 }
 
-.logout-div-btn{
-  margin-top: 0.5vh;
-}
 .logout-btn {
   appearance: none;
   background-color: #2d2b2b;

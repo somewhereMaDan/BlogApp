@@ -104,13 +104,13 @@ export default function Home() {
             return (
               <div className="blog-block" key={blog._id}>
                 <div className="blog-title">
-                  <h1>{blog.title}</h1>
+                  <summary className="blog-title-text">{blog.title}</summary>
                 </div>
                 <div className="blog-username">
                   Created by: {blog.userOwner.username}
                 </div>
                 <div className="blog-summary">
-                  <summary>{blog.summary}</summary>
+                  <div>{blog.summary}</div>
                 </div>
                 <div className="blog-image">
                   <img className="blog-image-src" src={blog.imageUrl} alt="" />

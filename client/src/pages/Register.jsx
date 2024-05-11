@@ -31,7 +31,7 @@ const Register = () => {
     }
   };
   return (
-    <div>
+    <div className="RegisterPage">
       <div className="Register">
         <form onSubmit={handleRegister} autocomplete="off" className="form">
           <div className="control">

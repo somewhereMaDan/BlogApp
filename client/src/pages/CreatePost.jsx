@@ -114,12 +114,13 @@ export default function CreatePost() {
           </div>
           <div className="INPUUT-file">
             <div className="img-input-div">
-              <div>Image URL </div>
+              {/* <div>Image URL </div> */}
               <input
                 className="img-input"
                 value={imageUrl}
                 onChange={(e) => setImageURL(e.target.value)}
-                type="text"
+                type="summary"
+                placeholder={"Image URL"}
               />
             </div>
           </div>
