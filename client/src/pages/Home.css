@@ -292,8 +292,8 @@
     transform: translateY(-3px);
   }
 
-  .save-blog-btn:active,
+  /* .save-blog-btn:active,
   .delete-blog-btn:active {
     transform: translateY(3px);
-  }
+  } */
 }
