@@ -8,20 +8,16 @@
 }
 
 .custom-quill-editor .ql-container {
-  /* width: 120vh;  */
   min-height: 35vh;
 }
 
 .ql-toolbar {
-  /* width: 120vh; */
-  /* width: 100%; */
   min-height: 5vh;
   background-color: white;
 }
 
 .ReactQuill {
-  min-height: 42vh;
-  margin-top: 1.5%;
+  margin-top: 1%;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -32,11 +28,6 @@
   justify-content: right;
   padding-right: 5%;
 }
-/* .generate-description {
-  position: absolute;
-  top: 1.5%;
-  right: 5.5%;
-} */
 
 .generate-description-btn {
   color: black;
@@ -57,7 +48,7 @@
   color: black;
   height: 5vh;
   border-radius: 7px;
-  width: 80%;
+  width: 90%;
 }
 
 .img-input {
@@ -100,50 +91,23 @@
   border: none;
 }
 
-@media screen and (max-width: 450px) {
-  /* .generate-description {
-    position: absolute;
-    top: 10%;
-    right: 2%;
-  } */
-
-  /* .generate-description-btn {
-    font-size: 12px;
-    width: 30vw;
-    border-radius: 7px;
-    padding: 0.5vh 0.8vh;
-  } */
-}
-
 @media screen and (max-width: 1024px) {
+  .generate-description{
+    display: flex;
+    justify-content: center;
+    padding-right: 0%;
+  }
   .main-page {
     padding: 2vh 5vh 2vh 5vh;
   }
   .img-input {
+    width: inherit;
     min-height: 5vh;
     border-radius: 7px;
     padding: 1vh;
   }
-  .INPUUT-file {
-    width: 98%;
-  }
-  /* .generate-description {
-    position: absolute;
-    top: 10%;
-    right: 2%;
-  } */
-
-  /* .generate-description-btn {
-    font-size: 12px;
-    width: 30vw;
-    border: none;
-    border-radius: 7px;
-    padding: 0.5vh 0.8vh;
-    background-color: #20b2aa;
-  } */
   .ReactQuill {
-    min-height: 45vh;
-    margin-top: 5%;
+    margin-top: 4%;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -155,6 +119,7 @@
   }
 
   .submit-btn {
+    margin-top: 10px;
     border-radius: 7px;
     padding: 1vh 5vh 1vh 5vh;
     background-color: whitesmoke;

@@ -113,25 +113,22 @@ export default function CreatePost() {
             />
           </div>
           <div className="INPUUT-file">
-            <div className="img-input-div">
-              {/* <div>Image URL </div> */}
               <input
-                className="img-input"
+                className="INPUUT"
                 value={imageUrl}
                 onChange={(e) => setImageURL(e.target.value)}
                 type="summary"
                 placeholder={"Image URL"}
               />
-            </div>
           </div>
           <div className="generate-description">
-              <button
-                className="generate-description-btn"
-                onClick={(e) => createDescription(e)}
-              >
-                Generate using (A.I)
-              </button>
-            </div>
+            <button
+              className="generate-description-btn"
+              onClick={(e) => createDescription(e)}
+            >
+              Generate description using (A.I)
+            </button>
+          </div>
           <div className="ReactQuill">
             <div className="ReactQuill-div">
               <ReactQuill
@@ -140,15 +137,16 @@ export default function CreatePost() {
                 style={{ width: "100%" }}
                 className="custom-quill-editor"
               />
+              <div className="submit-div">
+                <div>
+                  <button style={{ marginTop: "15%" }} className="submit-btn" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="submit-div">
-            <div>
-              <button className="submit-btn" type="submit">
-                Submit
-              </button>
-            </div>
-          </div>
+
         </form>
       </div>
     </div>
