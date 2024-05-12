@@ -5,6 +5,7 @@ body {
   color: white;
 }
 .main-page{
+  z-index: 1;
   padding: 7vh 10vh 7vh 10vh; 
 }
 
@@ -104,8 +105,11 @@ a {
 
 /* Navigation for mobile devices */
 @media screen and (max-width: 1150px) {
+  .nav__logo{
+    font-size: 20px;
+  }
   .nav__menu {
-    z-index: 2;
+    z-index: 10;
     position: fixed;
     left: -100%;
     top: 0;
@@ -269,6 +273,7 @@ a {
   }
 
   .nav__menu {
+    z-index: 10;
     display: flex;
     align-items: center;
     column-gap: 3.5rem;

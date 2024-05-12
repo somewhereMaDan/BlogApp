@@ -20,26 +20,30 @@
 }
 
 .ReactQuill {
-  min-height: 43vh;
+  min-height: 42vh;
   margin-top: 1.5%;
   display: flex;
   justify-content: center;
   width: 100%;
   position: relative;
 }
-
-.generate-description {
+.generate-description{
+  display: flex;
+  justify-content: right;
+  padding-right: 5.2%;
+}
+/* .generate-description {
   position: absolute;
   top: 1.5%;
   right: 5.5%;
-}
+} */
 
 .generate-description-btn {
   color: black;
   font-size: 15px;
   border: none;
   border-radius: 7px;
-  padding: 3.5% 2.5vh;
+  padding: 0.7vh 2vw;
   background-color: #20b2aa;
 }
 
@@ -97,20 +101,18 @@
 }
 
 @media screen and (max-width: 450px) {
-  .generate-description {
+  /* .generate-description {
     position: absolute;
     top: 10%;
     right: 2%;
-  }
+  } */
 
-  .generate-description-btn {
+  /* .generate-description-btn {
     font-size: 12px;
     width: 30vw;
-    border: none;
     border-radius: 7px;
     padding: 0.5vh 0.8vh;
-    background-color: #20b2aa;
-  }
+  } */
 }
 
 @media screen and (max-width: 1024px) {
@@ -122,23 +124,20 @@
     border-radius: 7px;
     padding: 1vh;
   }
-  .INPUUT-file {
-    width: 98%;
-  }
-  .generate-description {
+  /* .generate-description {
     position: absolute;
     top: 10%;
     right: 2%;
-  }
+  } */
 
-  .generate-description-btn {
+  /* .generate-description-btn {
     font-size: 12px;
     width: 30vw;
     border: none;
     border-radius: 7px;
     padding: 0.5vh 0.8vh;
     background-color: #20b2aa;
-  }
+  } */
   .ReactQuill {
     min-height: 48vh;
     margin-top: 5%;

@@ -124,6 +124,14 @@ export default function CreatePost() {
               />
             </div>
           </div>
+          <div className="generate-description">
+              <button
+                className="generate-description-btn"
+                onClick={(e) => createDescription(e)}
+              >
+                Generate using (A.I)
+              </button>
+            </div>
           <div className="ReactQuill">
             <div className="ReactQuill-div">
               <ReactQuill
@@ -132,14 +140,6 @@ export default function CreatePost() {
                 style={{ width: "100%" }}
                 className="custom-quill-editor"
               />
-            </div>
-            <div className="generate-description">
-              <button
-                className="generate-description-btn"
-                onClick={(e) => createDescription(e)}
-              >
-                Generate using (A.I)
-              </button>
             </div>
           </div>
           <div className="submit-div">
