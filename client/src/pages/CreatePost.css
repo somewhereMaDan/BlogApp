@@ -64,7 +64,7 @@
 }
 
 .Create-Post {
-  margin-top: 4%;
+  margin-top: 1.5%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -77,7 +77,7 @@
 .Create-Post-Title,
 .Summary,
 .INPUUT-file,
-.ReactQuill{
+.ReactQuill {
   display: flex;
   justify-content: center;
   height: 7vh;
@@ -96,31 +96,51 @@
   border: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
+  .generate-description {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+  }
+
+  .generate-description-btn {
+    font-size: 12px;
+    width: 30vw;
+    border: none;
+    border-radius: 7px;
+    padding: 0.5vh 0.8vh;
+    background-color: #20b2aa;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-page {
+    padding: 2vh 5vh 2vh 5vh;
+  }
   .img-input {
     min-height: 5vh;
     border-radius: 7px;
     padding: 1vh;
   }
-  .INPUUT-file{
+  .INPUUT-file {
     width: 98%;
   }
   .generate-description {
     position: absolute;
-    top: 1%;
-    right: 2.5%;
+    top: 10%;
+    right: 2%;
   }
 
   .generate-description-btn {
     font-size: 12px;
-    width: 20vw;
+    width: 30vw;
     border: none;
     border-radius: 7px;
     padding: 0.5vh 0.8vh;
     background-color: #20b2aa;
   }
   .ReactQuill {
-    min-height: 45vh;
+    min-height: 48vh;
     margin-top: 5%;
     display: flex;
     justify-content: center;

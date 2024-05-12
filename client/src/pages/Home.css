@@ -25,6 +25,7 @@
 }
 
 .save-blog {
+  z-index: 1;
   margin-top: 2%;
   display: flex;
   width: 55vw;
@@ -114,7 +115,7 @@
 }
 
 .blog-block {
-  padding: 3vh;
+  /* padding: 3vh; */
   border-radius: 7px;
   display: flex;
   flex-direction: column;
@@ -138,7 +139,7 @@
 @media screen and (max-width: 1024px) {
   .blog-block {
     width: 100vw;
-    padding: 3vh;
+    padding: 2vh;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
@@ -161,6 +162,7 @@
     margin-top: 5%;
   }
   .save-blog {
+    z-index: 1;
     margin-top: 2%;
     width: 90vw;
     display: flex;
@@ -171,6 +173,7 @@
 
   .save-blog-btn,
   .delete-blog-btn {
+    z-index: 1;
     height: 4vh;
     width: 1vw;
     align-items: center;
@@ -243,7 +246,7 @@
   }
   .save-blog {
     margin-top: 2%;
-    /* width: 100%; */
+    z-index: 1;
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
