@@ -138,7 +138,7 @@ export default function CreatePost() {
                 className="generate-description-btn"
                 onClick={(e) => createDescription(e)}
               >
-                Generate description by A.I
+                Generate (A.I)
               </button>
             </div>
           </div>
