@@ -139,7 +139,7 @@ export default function CreatePost() {
               />
               <div className="submit-div">
                 <div>
-                  <button style={{ marginTop: "15%" }} className="submit-btn" type="submit">
+                  <button style={{ marginTop: "10%" }} className="submit-btn" type="submit">
                     Submit
                   </button>
                 </div>
