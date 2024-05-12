@@ -8,7 +8,7 @@ h1 {
 
 .form {
   width: 70vh;
-  padding: 45px 15px 24px;
+  padding: 40px 15px 24px;
   margin: 0 auto;
 }
 .form .control {
@@ -200,7 +200,7 @@ h1 {
 
 @media screen and (max-width: 400px) {
   .form {
-    width: 25vh;
+    width: 40vh;
     padding: 64px 15px 24px;
     margin: 0 auto;
   }
@@ -208,7 +208,7 @@ h1 {
 
 @media screen and (max-width: 360px) {
   .form {
-    width: 20vh;
+    width: 30vh;
     padding: 64px 15px 24px;
     margin: 0 auto;
   }
