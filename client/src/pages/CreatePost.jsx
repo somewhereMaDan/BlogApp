@@ -126,7 +126,7 @@ export default function CreatePost() {
               className="generate-description-btn"
               onClick={(e) => createDescription(e)}
             >
-              Generate description using (A.I)
+              Generate description using A.I
             </button>
           </div>
           <div className="ReactQuill">
