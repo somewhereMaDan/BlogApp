@@ -142,7 +142,7 @@
     background-color: #20b2aa;
   } */
   .ReactQuill {
-    min-height: 48vh;
+    min-height: 45vh;
     margin-top: 5%;
     display: flex;
     justify-content: center;
