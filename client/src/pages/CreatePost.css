@@ -30,7 +30,7 @@
 .generate-description{
   display: flex;
   justify-content: right;
-  padding-right: 5.2%;
+  padding-right: 5%;
 }
 /* .generate-description {
   position: absolute;
@@ -123,6 +123,9 @@
     min-height: 5vh;
     border-radius: 7px;
     padding: 1vh;
+  }
+  .INPUUT-file {
+    width: 98%;
   }
   /* .generate-description {
     position: absolute;
