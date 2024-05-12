@@ -90,6 +90,9 @@ a {
 }
 
 .nav__logo {
+  text-decoration: none;
+  color: white;
+  border-bottom: 3px solid rgb(85, 12, 138);
   font-size: 30px;
   color: var(--white-color);
   font-weight: var(--font-medium);
