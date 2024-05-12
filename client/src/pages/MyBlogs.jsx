@@ -98,7 +98,7 @@ export default function MyBlogs() {
                   Created by: {blog.userOwner.username}
                 </div>
                 <div className="blog-summary">
-                  <summary>{blog.summary}</summary>
+                  <div>{blog.summary}</div>
                 </div>
                 <div className="blog-image">
                   <img className="blog-image-src" src={blog.imageUrl} alt="" />
