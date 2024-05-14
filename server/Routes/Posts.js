@@ -139,7 +139,7 @@ router.post("/generateDesc", async (req, res) => {
     const result = await response.json();
 
     if (result.error) {
-      res.send(400).send({
+      res.sendStatus(400).send({
         msgg: "Something went wrong"
       })
       return
