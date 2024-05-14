@@ -12,9 +12,12 @@ function Login() {
   const [password, setPassword] = useState();
   const [_, setCookie] = useCookies(["access_Token"]);
 
+  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      toast.info("Logging in...");
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/login`,
         {
@@ -43,7 +46,7 @@ function Login() {
   return (
     <div className="LoginPage">
       <div className="Login">
-        <form onSubmit={handleLogin} autocomplete="off" className="form">
+        <form onSubmit={handleLogin} autoComplete="off" className="form">
           <div className="control">
             <div className="SignIn_SignUp">
               <h1>Sign In</h1>

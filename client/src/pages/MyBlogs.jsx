@@ -92,7 +92,7 @@ export default function MyBlogs() {
             return (
               <div className="blog-block" key={blog._id}>
                 <div className="blog-title">
-                  <h1>{blog.title}</h1>
+                  <h1 className='blog-title-text'>{blog.title}</h1>
                 </div>
                 <div className="blog-username">
                   Created by: {blog.userOwner.username}

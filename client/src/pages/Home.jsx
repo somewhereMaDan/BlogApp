@@ -54,7 +54,7 @@ export default function Home() {
         },
         { headers: { authorization: cookies.access_Token } }
       );
-      toast.success("Blog saved successfully");
+      toast.success("Blog saved successfully in your Saved Blogs");
       setLoading(false);
     } catch (err) {
       const revertedSavedBlogs = savedBlogs.filter((id) => id !== blogId);
@@ -74,7 +74,7 @@ export default function Home() {
         blogId,
         userId,
       });
-      toast.success("Blog deleted successfully");
+      toast.success("Blog deleted successfully from your Saved Blogs");
       setLoading(false);
     } catch (err) {
       const revertedSavedBlogs = [...savedBlogs, blogId];
@@ -107,7 +107,7 @@ export default function Home() {
                   <h1 className="blog-title-text">{blog.title}</h1>
                 </div>
                 <div className="blog-username">
-                  Created by: {blog.userOwner.username}
+                Created by: {blog.userOwner ? blog.userOwner.username : "Unknown"}
                 </div>
                 <div className="blog-summary">
                   <div>{blog.summary}</div>

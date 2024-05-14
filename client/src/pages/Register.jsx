@@ -7,9 +7,19 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const isStrongPassword = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (!isStrongPassword(password)) {
+      toast.error("Password must be at least 12 characters long and include a combination of uppercase and lowercase letters, numbers, and symbols.");
+      return;
+    }
     try {
+      toast.info("Registering User...")
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/register`,
         {
@@ -33,7 +43,7 @@ const Register = () => {
   return (
     <div className="RegisterPage">
       <div className="Register">
-        <form onSubmit={handleRegister} autocomplete="off" className="form">
+        <form onSubmit={handleRegister} autoComplete="off" className="form">
           <div className="control">
             <div className="SignIn_SignUp">
               <h1>Sign Up</h1>
